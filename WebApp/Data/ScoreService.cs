@@ -20,7 +20,10 @@ namespace WebApp.Data
         // Henter alle scores
         public async Task<IEnumerable<Score>> GetScoresAsync()
         {
-            return await _ctx.Scores.Include(x => x.Player).ToListAsync();
+            return await _ctx.Scores
+                .Include(x => x.Player)
+                .Include(y => y.Course)
+                .ToListAsync();
         }
 
         // Henter specifik score ud fra Id.

@@ -32,6 +32,7 @@ namespace WebApp
             services.AddServerSideBlazor();
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<ScoreService>();
+            services.AddScoped<CourseService>();
 
             services.AddSingleton<HttpClient>();
 

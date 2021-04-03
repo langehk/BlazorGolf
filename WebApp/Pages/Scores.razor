@@ -14,6 +14,7 @@ else
 <table class="table">
     <thead>
         <tr>
+            <th>Bane</th>
             <th>Dato</th>
             <th>Spiller</th>
             <th>Point</th>
@@ -22,11 +23,12 @@ else
     <tbody>
         @foreach (var score in ScoreData)
         {
-            <tr>
-                <td>@score.Date</td>
-                <td>@score.Player.Name</td>
-                <td>@score.Point</td>
-            </tr>
+        <tr>
+            <td>@score.Course.Name</td>
+            <td>@score.Date</td>
+            <td>@score.Player.Name</td>
+            <td>@score.Point</td>
+        </tr>
         }
     </tbody>
 </table>

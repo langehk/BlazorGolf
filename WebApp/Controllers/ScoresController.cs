@@ -27,7 +27,10 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Score>>> GetScores()
         {
-            return await _ctx.Scores.AsNoTracking().Include(x => x.Player).ToListAsync();
+            return await _ctx.Scores.AsNoTracking()
+                .Include(x => x.Player)
+                .Include(y => y.Course)
+                .ToListAsync();
         }
 
         // GET: api/Scores/5
@@ -83,11 +86,6 @@ namespace WebApp.Controllers
             await _ctx.SaveChangesAsync();
 
             return score;
-        }
-
-        private bool ScoreExists(int id)
-        {
-            return _ctx.Scores.Any(e => e.Id == id);
         }
 }
 }

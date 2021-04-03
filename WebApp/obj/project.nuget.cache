@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kMImeTBNgYfgO95Wbun+TAmHG8LQMS8gkT+kEkb98A3ZrhSaMnkAF89XA7JjYDPFfPw/Ur+X/g5fLO8Nvps+TA==",
+  "dgSpecHash": "8wbb/P/18cpF47M4hZEA9l3svxLH7GSgxJiodnX3PZo8FLDZxgJiIaezPF1358rUL76RnW70tqf9JIfD+17vmQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Morten\\source\\repos\\BlazorGolf\\WebApp\\WebApp.csproj",
+  "projectFilePath": "C:\\Users\\Morten\\source\\repos\\BlazorGolf\\webapp\\WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Morten\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Morten\\.nuget\\packages\\microsoft.aspnetcore.blazor.httpclient\\3.2.0-preview3.20168.3\\microsoft.aspnetcore.blazor.httpclient.3.2.0-preview3.20168.3.nupkg.sha512",

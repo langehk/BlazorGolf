@@ -10,8 +10,8 @@ using WebApp.Database;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(dbcontext))]
-    [Migration("20210402210709_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210403142016_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,6 +81,9 @@ namespace WebApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CourseId")
+                        .IsUnique();
+
                     b.HasIndex("PlayerId");
 
                     b.ToTable("Scores");
@@ -88,13 +91,26 @@ namespace WebApp.Migrations
 
             modelBuilder.Entity("WebApp.Data.Score", b =>
                 {
+                    b.HasOne("WebApp.Data.Course", "Course")
+                        .WithOne("Score")
+                        .HasForeignKey("WebApp.Data.Score", "CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WebApp.Data.Player", "Player")
                         .WithMany("Scores")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Course");
+
                     b.Navigation("Player");
+                });
+
+            modelBuilder.Entity("WebApp.Data.Course", b =>
+                {
+                    b.Navigation("Score");
                 });
 
             modelBuilder.Entity("WebApp.Data.Player", b =>

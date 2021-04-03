@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApp.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -50,6 +50,12 @@ namespace WebApp.Migrations
                 {
                     table.PrimaryKey("PK_Scores", x => x.Id);
                     table.ForeignKey(
+                        name: "FK_Scores_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
                         name: "FK_Scores_Players_PlayerId",
                         column: x => x.PlayerId,
                         principalTable: "Players",
@@ -64,6 +70,12 @@ namespace WebApp.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Scores_CourseId",
+                table: "Scores",
+                column: "CourseId",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Scores_PlayerId",
                 table: "Scores",
                 column: "PlayerId");
@@ -72,10 +84,10 @@ namespace WebApp.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "Scores");
 
             migrationBuilder.DropTable(
-                name: "Scores");
+                name: "Courses");
 
             migrationBuilder.DropTable(
                 name: "Players");

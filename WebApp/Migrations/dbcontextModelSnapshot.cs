@@ -79,6 +79,8 @@ namespace WebApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CourseId");
+
                     b.HasIndex("PlayerId");
 
                     b.ToTable("Scores");
@@ -86,11 +88,19 @@ namespace WebApp.Migrations
 
             modelBuilder.Entity("WebApp.Data.Score", b =>
                 {
+                    b.HasOne("WebApp.Data.Course", "Course")
+                        .WithMany()
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("WebApp.Data.Player", "Player")
                         .WithMany("Scores")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Course");
 
                     b.Navigation("Player");
                 });

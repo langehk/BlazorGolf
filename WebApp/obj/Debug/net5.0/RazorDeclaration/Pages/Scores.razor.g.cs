@@ -98,7 +98,7 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 40 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
+#line 42 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
        
 
 

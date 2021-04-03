@@ -13,5 +13,7 @@ namespace WebApp.Data
         public DateTime Date { get; set; }
         public int Point { get; set; }
         public Player Player { get; set; }
+        public Course Course { get; set; }
+
     }
 }
