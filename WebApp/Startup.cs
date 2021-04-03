@@ -31,7 +31,7 @@ namespace WebApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddScoped<PlayerService>();
+            services.AddScoped<IPlayerService, PlayerService>();
 
             services.AddSingleton<HttpClient>();
 

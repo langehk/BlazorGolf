@@ -82,8 +82,15 @@ using WebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
+using WebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/players")]
-    public partial class Player : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class Players : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -91,22 +98,23 @@ using WebApp.Shared;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 27 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Player.razor"
+#line 37 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
        
 
-    List<Player> Data = new List<Player>();
+
+    IEnumerable<WebApp.Data.Player> PlayerData;
 
 
-    private async Task getPlayersAsync()
+    protected override async Task OnInitializedAsync()
     {
-        Data = await http.GetJsonAsync<List<Player>>("http://localhost:52462/api/players");
+        PlayerData = await Task.Run(() => playerService.GetPlayers());
     }
 
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private HttpClient http { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IPlayerService playerService { get; set; }
     }
 }
 #pragma warning restore 1591
