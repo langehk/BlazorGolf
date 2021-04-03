@@ -19,7 +19,6 @@ C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.MvcApplic
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.RazorComponent.input.cache
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\App.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\Counter.razor.g.cs
-C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\FetchData.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\Index.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\_Imports.razor.g.cs
@@ -32,7 +31,6 @@ C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.TagHelper
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.RazorCoreGenerate.cache
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\App.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\Counter.razor.g.cs
-C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\FetchData.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\Index.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Shared\SurveyPrompt.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\_Imports.razor.g.cs
@@ -91,3 +89,8 @@ C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\Microsoft.Entity
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\Microsoft.AspNetCore.Blazor.HttpClient.dll
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\Players.razor.g.cs
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\Players.razor.g.cs
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\Scores.razor.g.cs
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\Scores.razor.g.cs
+C:\Users\Morten\source\repos\BlazorGolf\webapp\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Morten\source\repos\BlazorGolf\webapp\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Morten\source\repos\BlazorGolf\webapp\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

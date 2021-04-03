@@ -30,17 +30,22 @@ namespace WebApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddScoped<IPlayerService, PlayerService>();
+           //services.AddScoped<IPlayerService, PlayerService>();
 
             services.AddSingleton<HttpClient>();
+
+            services.AddControllersWithViews()
+            .AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
+            //services.AddControllers();
 
 
             var connection = Configuration.GetConnectionString("BlazorGolf");
             services.AddDbContext<dbcontext>(options => options.UseSqlServer(connection));
 
-            services.AddControllers();
-
+   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
