@@ -1,0 +1,71 @@
+﻿@page "/scores/create"
+@inject ScoreService scoreService;
+@inject PlayerService playerService;
+@inject CourseService courseService;
+@using WebApp.Data;
+
+
+<h3>Submit score:</h3>
+
+
+<EditForm Model="@Model" OnValidSubmit="@CreateNewScore">
+
+    <label for="PlayerId">Player:</label>
+    <select @bind="Model.PlayerId">
+
+        @foreach (var player in players)
+        {
+            <option value="@player.Id">@player.Name</option>
+        }
+    </select>
+
+    <br />
+    <label for="CourseId">Course:</label>
+    <select @bind="Model.CourseId">
+
+        @foreach (var course in courses)
+        {
+            <option value="@course.Id">@course.Name</option>
+        }
+    </select>
+    <br />
+    <label for="Date">Date:</label>
+    <InputDate id="Date" @bind-Value="Model.Date" DisplayName="Date" />
+    <br />
+    <label for="Point">Point:</label>
+    <InputNumber id="Point" @bind-Value="Model.Point" DisplayName="Point" />
+
+    <br />
+    <button type="submit">Submit</button>
+
+
+</EditForm>
+
+
+@code {
+
+    private Score Model = new Score();
+
+    List<Player> players = new List<Player>();
+
+    List<Course> courses = new List<Course>();
+
+    public DateTime StartDate { get; set; } = DateTime.Now;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model.Date = DateTime.Now;
+        players = await playerService.GetPlayersAsync();
+        courses = await courseService.GetCoursesAsync();
+
+
+    }
+
+
+    protected async Task CreateNewScore()
+    {
+
+        await Task.Run(() => scoreService.CreateScore(Model));
+    }
+}

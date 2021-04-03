@@ -19,7 +19,7 @@ namespace WebApp.Data
 
 
         // Henter alle Courses
-        public async Task<IEnumerable<Course>> GetCoursesAsync()
+        public async Task<List<Course>> GetCoursesAsync()
         {
             return await _ctx.Courses.ToListAsync();
         }

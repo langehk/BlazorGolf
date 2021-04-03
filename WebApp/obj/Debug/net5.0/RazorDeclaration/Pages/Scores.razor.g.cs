@@ -89,6 +89,13 @@ using WebApp.Data;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 12 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using WebApp.Dto;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/scores")]
     public partial class Scores : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -98,7 +105,7 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 42 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
+#line 47 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
        
 
 

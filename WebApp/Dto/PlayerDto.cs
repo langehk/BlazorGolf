@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Data;
 
-namespace WebApp.Model
+namespace WebApp.Dto
 {
     public class PlayerDto
     {

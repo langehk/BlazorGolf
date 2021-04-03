@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,11 +17,14 @@ namespace WebApp.Controllers
     public class ScoresController : ControllerBase
     {
         private readonly dbcontext _ctx;
+        protected readonly IMapper _mapper;
 
-        public ScoresController(dbcontext ctx)
+        public ScoresController(dbcontext ctx, IMapper mapper)
         {
             _ctx = ctx;
+            _mapper = mapper;
         }
+
 
 
         // GET: api/Scores
@@ -51,26 +55,42 @@ namespace WebApp.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutScore(Score score)
+        public async Task<ActionResult> PutScore(int id, [FromBody] ScoreDto score)
         {
-            
-            _ctx.Entry(score).State = EntityState.Modified;
-           await _ctx.SaveChangesAsync();
 
-            return Ok();
+            var _score = await _ctx.Set<Score>().FindAsync(id);
+
+            if (_score == null) return BadRequest("Object not found");
+
+            _score = _mapper.Map(score, _score);
+            _score.Id = id;
+
+            _ctx.Update(_score);
+
+            await _ctx.SaveChangesAsync();
+
+            return Ok(_score);
         }
 
-        // POST: api/Scores
+        /*// POST: api/Scores
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<ScoreDto>> PostScore(Score score)
+        public async Task<ActionResult<Score>> PostScore(int id, [FromBody] ScoreDto score)
         {
-            _ctx.Scores.Add(score);
-            await _ctx.SaveChangesAsync();
 
-            return CreatedAtAction("GetScore", new { id = score.Id }, score);
-        }
+            var _score = await _ctx.Scores.FindAsync(id);
+
+
+            if (_score == null) return BadRequest("Object not found");
+
+
+
+            //_ctx.Scores.Add(score);
+            //await _ctx.SaveChangesAsync();
+
+            return Ok();
+        }*/
 
         // DELETE: api/Scores/5
         [HttpDelete("{id}")]

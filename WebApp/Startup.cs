@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -31,11 +32,21 @@ namespace WebApp
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<IPlayerService, PlayerService>();
+            services.AddScoped<PlayerService>();
             services.AddScoped<ScoreService>();
             services.AddScoped<CourseService>();
 
             services.AddSingleton<HttpClient>();
+
+            services.AddAutoMapper(typeof(Startup));
+
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMappingProfile());
+            });
+
+
 
             services.AddControllersWithViews()
             .AddNewtonsoftJson(options =>
@@ -51,7 +62,9 @@ namespace WebApp
             var connection = Configuration.GetConnectionString("BlazorGolf");
             services.AddDbContext<dbcontext>(options => options.UseSqlServer(connection));
 
-   
+
+            IMapper mapper = mappingConfig.CreateMapper();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

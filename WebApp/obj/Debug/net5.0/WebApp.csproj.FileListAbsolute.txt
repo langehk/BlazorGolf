@@ -10,7 +10,6 @@ C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\ref\WebApp.dll
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\WebApp.pdb
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\WebApp.Views.dll
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\WebApp.Views.pdb
-C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.csprojAssemblyReference.cache
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.AssemblyInfoInputs.cache
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.AssemblyInfo.cs
@@ -95,3 +94,7 @@ C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\Swashbuckle.AspN
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\CreateScore.razor.g.cs
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\CreateScore.razor.g.cs
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApp.Database;
-using WebApp.Model;
 
 namespace WebApp.Data
 {
-    public class PlayerService : IPlayerService
+    public class PlayerService
     {
         private readonly dbcontext _ctx;
 
@@ -38,7 +37,7 @@ namespace WebApp.Data
           return player;
         }
 
-        public async Task<IEnumerable<Player>> GetPlayers()
+        public async Task<List<Player>> GetPlayersAsync()
         {
             return await _ctx.Players.ToListAsync();
         }
@@ -50,5 +49,6 @@ namespace WebApp.Data
 
             return player;
         }
+
     }
 }

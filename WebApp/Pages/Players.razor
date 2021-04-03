@@ -1,5 +1,5 @@
 ﻿@page "/players"
-@inject IPlayerService playerService;
+@inject PlayerService playerService;
 
 
 @if (PlayerData == null)
@@ -40,7 +40,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        PlayerData = await Task.Run(() => playerService.GetPlayers());
+        PlayerData = await Task.Run(() => playerService.GetPlayersAsync());
     }
 
 }
