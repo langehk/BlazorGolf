@@ -17,7 +17,9 @@ namespace WebApp.Database
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-HFC2M8S;Database=BlazorGolf;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=tcp:blazorgolf.database.windows.net,1433;Initial Catalog=WebApp_db;Persist Security Info=False;User ID=langehk;Password=Tigerwoods6!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+                
+                //optionsBuilder.UseSqlServer("Server=DESKTOP-HFC2M8S;Database=BlazorGolf;Trusted_Connection=True;");
             }
         }
 
