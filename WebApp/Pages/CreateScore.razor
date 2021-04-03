@@ -9,15 +9,15 @@
 
 
 <EditForm Model="@Model" OnValidSubmit="@CreateNewScore">
-
+    <DataAnnotationsValidator />
     <label for="PlayerId">Player:</label>
-    <select @bind="Model.PlayerId">
+    <InputSelect @bind-Value="Model.PlayerId">
 
         @foreach (var player in players)
         {
             <option value="@player.Id">@player.Name</option>
         }
-    </select>
+    </InputSelect>
 
     <br />
     <label for="CourseId">Course:</label>
@@ -58,14 +58,19 @@
         Model.Date = DateTime.Now;
         players = await playerService.GetPlayersAsync();
         courses = await courseService.GetCoursesAsync();
-
+        Model.PlayerId = players[0].Id;
+        Model.CourseId = courses[0].Id;
 
     }
 
 
     protected async Task CreateNewScore()
     {
-
+        // TODO pushing wrong data into model? - Use DTO instead?
+        Model.Player = null;
+        Model.Course = null;
         await Task.Run(() => scoreService.CreateScore(Model));
+
+        UriHelper.NavigateTo("Scores");
     }
 }

@@ -18,7 +18,7 @@ namespace WebApp.Data
         }
 
         // Henter alle scores
-        public async Task<IEnumerable<Score>> GetScoresAsync()
+        public async Task<List<Score>> GetScoresAsync()
         {
             return await _ctx.Scores
                 .Include(x => x.Player)

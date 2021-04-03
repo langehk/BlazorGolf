@@ -1,0 +1,56 @@
+﻿@page "/standings"
+@inject ScoreService scoreService;
+
+@if (TotalScores == null)
+{
+    <div class="spinner-border"></div>
+}
+else
+{
+    <h3>Standings 2021 Season</h3>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var score in data)
+            {
+            <tr>
+                <td>@score.Name</td>
+                <td>@score.TotalScore</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    List<Score> TotalScores = new List<Score>();
+
+    List<PlayerTotalStanding> data = new List<PlayerTotalStanding>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        TotalScores = await scoreService.GetScoresAsync();
+
+        data = TotalScores.GroupBy(x => x.PlayerId)
+            .Select(cl => new PlayerTotalStanding
+            {
+                Name = cl.First().Player.Name,
+                PlayerId = cl.Key,
+                TotalScore = cl.Sum( c => c.Point).ToString(),
+            }).ToList();
+    }
+
+    public class PlayerTotalStanding
+    {
+        public string Name { get; set; }
+        public int PlayerId { get; set; }
+        public string TotalScore { get; set; }
+    }
+}

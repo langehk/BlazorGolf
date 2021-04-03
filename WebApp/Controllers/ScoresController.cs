@@ -41,7 +41,7 @@ namespace WebApp.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Score>> GetScore(int id)
         {
-            var score = await _ctx.Scores.AsNoTracking().Include(x => x.Player).SingleOrDefaultAsync(x => x.Id == id);
+            var score = await _ctx.Scores.AsNoTracking().Include(x => x.Player.Id).SingleOrDefaultAsync(x => x.Id == id);
 
             if (score == null)
             {

@@ -26,14 +26,14 @@ namespace WebApp.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
-            return await _context.Players.AsNoTracking().Include(x => x.Scores).ToListAsync();
+            return await _context.Players.AsNoTracking().ToListAsync();
         }
 
         // GET: api/Players/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
-            var player = await _context.Players.AsNoTracking().Include(x => x.Scores).SingleOrDefaultAsync(x => x.Id == id);
+            var player = await _context.Players.AsNoTracking().SingleOrDefaultAsync(x => x.Id == id);
 
             if (player == null)
             {
