@@ -101,3 +101,5 @@ C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\ref\WebApp.dll
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.pdb
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.genruntimeconfig.cache
 C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\WebApp.csprojAssemblyReference.cache
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\RazorDeclaration\Pages\CreatePlayer.razor.g.cs
+C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\Razor\Pages\CreatePlayer.razor.g.cs

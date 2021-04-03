@@ -83,21 +83,21 @@ using WebApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
+#line 11 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using WebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 12 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
 using WebApp.Dto;
 
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 5 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
-using WebApp.Data;
-
-#line default
-#line hidden
-#nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/scores/create")]
-    public partial class CreateScore : Microsoft.AspNetCore.Components.ComponentBase
+    [Microsoft.AspNetCore.Components.RouteAttribute("/players/create")]
+    public partial class CreatePlayer : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
         protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
@@ -105,45 +105,27 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
+#line 19 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreatePlayer.razor"
        
 
-    private Score Model = new Score();
-
-    List<Player> players = new List<Player>();
-
-    List<Course> courses = new List<Course>();
-
-    public DateTime StartDate { get; set; } = DateTime.Now;
+    private Player Model = new Player();
 
 
-    protected override async Task OnInitializedAsync()
-    {
-        Model.Date = DateTime.Now;
-        players = await playerService.GetPlayersAsync();
-        courses = await courseService.GetCoursesAsync();
-        Model.PlayerId = players[0].Id;
-        Model.CourseId = courses[0].Id;
-
-    }
-
-
-    protected async Task CreateNewScore()
+    protected async Task CreateNewPlayer()
     {
         // TODO pushing wrong data into model? - Use DTO instead?
-        Model.Player = null;
-        Model.Course = null;
-        await Task.Run(() => scoreService.CreateScore(Model));
+        
+        await Task.Run(() => playerService.CreatePlayer(Model));
 
-        UriHelper.NavigateTo("Scores");
+        UriHelper.NavigateTo("Players");
     }
+
+
 
 #line default
 #line hidden
 #nullable disable
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private CourseService courseService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private PlayerService playerService { get; set; }
-        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ScoreService scoreService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
     }
 }

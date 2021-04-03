@@ -17,9 +17,13 @@ namespace WebApp.Data
             _ctx = ctx;
         }
 
-        public Task<Player> CreatePlayer(Player player)
+        public async Task<bool> CreatePlayer(Player player)
         {
-            throw new NotImplementedException();
+            await _ctx.AddAsync(player);
+            await _ctx.SaveChangesAsync();
+
+            return true;
+
         }
 
         public async Task<bool> DeletePlayer(Player player)

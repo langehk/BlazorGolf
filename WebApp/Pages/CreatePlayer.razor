@@ -1,0 +1,34 @@
+﻿@page "/players/create"
+@inject PlayerService playerService;
+
+
+<h3>CreatePlayer</h3>
+
+<EditForm Model="@Model" OnValidSubmit="@CreateNewPlayer">
+    <label>Name:</label>
+    <InputText id="name" @bind-Value="@Model.Name"></InputText>
+    <br />
+    <label>Handicap:</label>
+    <InputNumber id="handicap" @bind-Value="@Model.Handicap"></InputNumber>
+    <br />
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+
+@code {
+
+    private Player Model = new Player();
+
+
+    protected async Task CreateNewPlayer()
+    {
+        // TODO pushing wrong data into model? - Use DTO instead?
+        
+        await Task.Run(() => playerService.CreatePlayer(Model));
+
+        UriHelper.NavigateTo("Players");
+    }
+
+
+}
