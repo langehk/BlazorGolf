@@ -98,7 +98,7 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
+#line 36 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
        
 
     IEnumerable<WebApp.Data.Player> PlayerData;

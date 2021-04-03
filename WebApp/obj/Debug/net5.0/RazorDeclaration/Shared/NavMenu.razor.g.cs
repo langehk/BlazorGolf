@@ -97,7 +97,7 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 33 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Shared\NavMenu.razor"
+#line 28 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 
