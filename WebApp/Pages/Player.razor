@@ -1,0 +1,37 @@
+﻿@page "/players"
+@inject HttpClient http 
+
+
+@if (Data == null)
+{
+    <div class="spinner-border"></div>
+}
+else
+{
+
+    <h3>Players</h3>
+
+
+    <button @onclick="@getPlayersAsync">Get players</button>
+
+
+    @foreach( var player in @Data)
+    {
+        <p>tset</p>
+    }
+
+
+<p>This page will display players</p>
+}
+
+@code {
+
+    List<Player> Data = new List<Player>();
+
+
+    private async Task getPlayersAsync()
+    {
+        Data = await http.GetJsonAsync<List<Player>>("http://localhost:52462/api/players");
+    }
+
+}
