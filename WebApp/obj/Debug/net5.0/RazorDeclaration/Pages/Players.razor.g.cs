@@ -83,7 +83,7 @@ using WebApp.Shared;
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
+#line 11 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
 using WebApp.Data;
 
 #line default
@@ -98,7 +98,7 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
+#line 44 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Players.razor"
        
 
     IEnumerable<WebApp.Data.Player> PlayerData;

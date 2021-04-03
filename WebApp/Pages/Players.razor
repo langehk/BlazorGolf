@@ -1,5 +1,4 @@
 ﻿@page "/players"
-@using WebApp.Data;
 @inject IPlayerService playerService;
 
 
@@ -27,7 +26,7 @@ else
                     <td>@player.Id</td>
                     <td>@player.Name</td>
                     <td>@player.Handicap</td>
-                   /* <td>
+                    <td>
                         <a class="nav-link" href="EditEmployee/@player.Id">
                             <span class="oi oi-pencil" aria-hidden="true">Edit</span>
                         </a>

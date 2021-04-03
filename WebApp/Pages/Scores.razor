@@ -1,13 +1,51 @@
 ﻿@page "/scores";
+@inject ScoreService scoreService;
 
 
+@if (ScoreData == null)
+    {
+        <div class="spinner-border"></div>
+    }
 
-
+else
+    {
 <h3>Scores</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Dato</th>
+            <th>Spiller</th>
+            <th>Point</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var score in ScoreData)
+        {
+            <tr>
+                <td>@score.Date</td>
+                <td>@score.Player.Name</td>
+                <td>@score.Point</td>
+            </tr>
+        }
+    </tbody>
+</table>
+    }
+
+
 
 
 
 
 @code {
+
+
+    IEnumerable<WebApp.Data.Score> ScoreData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ScoreData = await Task.Run(() => scoreService.GetScoresAsync());
+    }
+
 
 }

@@ -82,6 +82,13 @@ using WebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using WebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998

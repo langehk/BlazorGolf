@@ -82,6 +82,13 @@ using WebApp.Shared;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 11 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using WebApp.Data;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/scores")]
     public partial class Scores : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -90,6 +97,24 @@ using WebApp.Shared;
         {
         }
         #pragma warning restore 1998
+#nullable restore
+#line 40 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
+       
+
+
+    IEnumerable<WebApp.Data.Score> ScoreData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        ScoreData = await Task.Run(() => scoreService.GetScoresAsync());
+    }
+
+
+
+#line default
+#line hidden
+#nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ScoreService scoreService { get; set; }
     }
 }
 #pragma warning restore 1591
