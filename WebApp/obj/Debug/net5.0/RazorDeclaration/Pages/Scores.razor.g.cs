@@ -96,6 +96,13 @@ using WebApp.Dto;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/scores")]
     public partial class Scores : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -105,22 +112,83 @@ using WebApp.Dto;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 47 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
+#line 51 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\Scores.razor"
        
 
+    //https://mudblazor.com/components/linechart
 
-    IEnumerable<WebApp.Data.Score> ScoreData;
+
+    public IEnumerable<WebApp.Data.Score> ScoreData;
+
+    public List<string> xAxis = new List<string>();
+    //X Aksen Chart.
+    public string[] XAxisLabels = { };
+
+    public IEnumerable<Player> Players;
+
+
 
     protected override async Task OnInitializedAsync()
     {
-        ScoreData = await Task.Run(() => scoreService.GetScoresAsync());
+        ScoreData = await Task.Run(() => scoreService.GetScoresAsync()); // Score, dato, player
+        Players = await Task.Run(() => playerService.GetPlayersAsync()); // Navn, id, HCP
+
+        loadChartData();
+
     }
 
+    public List<ChartSeries> Series = new List<ChartSeries>();
+    public ChartOptions Options = new ChartOptions();
 
+
+
+    public void loadChartData()
+    {
+
+        var new_data = new List<ChartSeries>() { };
+
+
+        List<double> listOfScores = new List<double>();
+
+
+
+        foreach (var player in Players)
+        {
+
+            var scoresUser = ScoreData.Where(x => x.Player.Id == player.Id).ToList();
+
+
+            double[] scoreData = new double[scoresUser.Count];
+
+
+            for (int i = 0; i < scoresUser.Count; i++)
+            {
+                scoreData[i] = scoresUser[i].Point;
+            }
+
+            new_data.Add(new ChartSeries() { Name = player.Name, Data = scoreData });
+        }
+
+
+        // Skal tilføje data til brugeren.
+        foreach (var score in ScoreData)
+        {
+            xAxis.Add(score.Date.ToString());
+        };
+
+
+        Series = new_data;
+        XAxisLabels = xAxis.ToArray(); // Sender vores datoer med ind her.
+
+        Options.YAxisTicks = 400;
+
+        StateHasChanged();
+    }
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private PlayerService playerService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ScoreService scoreService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager UriHelper { get; set; }
     }

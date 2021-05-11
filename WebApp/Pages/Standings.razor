@@ -38,7 +38,7 @@ else
     {
         TotalScores = await scoreService.GetScoresAsync();
 
-        data = TotalScores.GroupBy(x => x.PlayerId)
+        data = TotalScores.GroupBy(x => x.Player.Id)
             .Select(cl => new PlayerTotalStanding
             {
                 Name = cl.First().Player.Name,

@@ -21,7 +21,6 @@ namespace WebApp.Data
         public async Task<List<Score>> GetScoresAsync()
         {
             return await _ctx.Scores
-                .Include(x => x.Player)
                 .Include(y => y.Course)
                 .ToListAsync();
         }
@@ -63,5 +62,6 @@ namespace WebApp.Data
 
             return true;
         }
+
     }
 }

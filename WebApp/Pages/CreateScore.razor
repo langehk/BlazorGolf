@@ -6,8 +6,8 @@
 
 <h3>Submit score:</h3>
 
-
 <EditForm Model="@Model" OnValidSubmit="@CreateNewScore">
+
     <DataAnnotationsValidator />
     <label for="PlayerId">Player:</label>
     <InputSelect @bind-Value="Model.PlayerId">
@@ -17,6 +17,8 @@
             <option value="@player.Id">@player.Name</option>
         }
     </InputSelect>
+
+
 
     <br />
     <label for="CourseId">Course:</label>
@@ -36,18 +38,17 @@
 
     <br />
     <button type="submit">Submit</button>
-
-
 </EditForm>
+
 
 
 @code {
 
-    private Score Model = new Score();
+    public Score Model = new Score();
 
-    List<Player> players = new List<Player>();
+    public List<Player> players = new List<Player>();
 
-    List<Course> courses = new List<Course>();
+    public List<Course> courses = new List<Course>();
 
     public DateTime StartDate { get; set; } = DateTime.Now;
 
@@ -57,9 +58,10 @@
         Model.Date = DateTime.Now;
         players = await playerService.GetPlayersAsync();
         courses = await courseService.GetCoursesAsync();
-        Model.PlayerId = players[0].Id;
-        Model.CourseId = courses[0].Id;
 
+
+        Model.PlayerId = players[0].Id; 
+        Model.CourseId = courses[0].Id;
     }
 
 

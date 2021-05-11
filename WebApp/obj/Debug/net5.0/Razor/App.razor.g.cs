@@ -93,6 +93,13 @@ using WebApp.Dto;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
     public partial class App : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -108,7 +115,7 @@ using WebApp.Dto;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(2, "PreferExactMatches", 
+            __builder.AddAttribute(2, "PreferExactMatches", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
 #nullable restore
 #line 1 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\App.razor"
                                                                      true
@@ -116,7 +123,7 @@ using WebApp.Dto;
 #line default
 #line hidden
 #nullable disable
-            );
+            ));
             __builder.AddAttribute(3, "Found", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder2) => {
                 __builder2.OpenComponent<Microsoft.AspNetCore.Components.RouteView>(4);
                 __builder2.AddAttribute(5, "RouteData", Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.RouteData>(

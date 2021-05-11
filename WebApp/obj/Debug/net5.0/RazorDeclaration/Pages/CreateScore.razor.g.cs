@@ -90,6 +90,13 @@ using WebApp.Dto;
 #line hidden
 #nullable disable
 #nullable restore
+#line 14 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 5 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
 using WebApp.Data;
 
@@ -105,14 +112,14 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
+#line 45 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
        
 
-    private Score Model = new Score();
+    public Score Model = new Score();
 
-    List<Player> players = new List<Player>();
+    public List<Player> players = new List<Player>();
 
-    List<Course> courses = new List<Course>();
+    public List<Course> courses = new List<Course>();
 
     public DateTime StartDate { get; set; } = DateTime.Now;
 
@@ -122,9 +129,10 @@ using WebApp.Data;
         Model.Date = DateTime.Now;
         players = await playerService.GetPlayersAsync();
         courses = await courseService.GetCoursesAsync();
-        Model.PlayerId = players[0].Id;
-        Model.CourseId = courses[0].Id;
 
+
+        Model.PlayerId = players[0].Id; 
+        Model.CourseId = courses[0].Id;
     }
 
 

@@ -72,11 +72,11 @@ namespace WebApp.Controllers
             return Ok(_score);
         }
 
-        /*// POST: api/Scores
+        // POST: api/Scores
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Score>> PostScore(int id, [FromBody] ScoreDto score)
+        public async Task<ActionResult<Score>> PostScore(int id, [FromBody] Score score)
         {
 
             var _score = await _ctx.Scores.FindAsync(id);
@@ -85,12 +85,11 @@ namespace WebApp.Controllers
             if (_score == null) return BadRequest("Object not found");
 
 
-
-            //_ctx.Scores.Add(score);
-            //await _ctx.SaveChangesAsync();
+            _ctx.Scores.Add(score);
+            await _ctx.SaveChangesAsync();
 
             return Ok();
-        }*/
+        }
 
         // DELETE: api/Scores/5
         [HttpDelete("{id}")]

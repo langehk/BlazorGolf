@@ -105,7 +105,7 @@ using WebApp.Data;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
+#line 44 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\Pages\CreateScore.razor"
        
 
     private Score Model = new Score();

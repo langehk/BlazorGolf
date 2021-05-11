@@ -96,6 +96,13 @@ using WebApp.Dto;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/standings")]
     public partial class Standings : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -116,7 +123,7 @@ using WebApp.Dto;
     {
         TotalScores = await scoreService.GetScoresAsync();
 
-        data = TotalScores.GroupBy(x => x.PlayerId)
+        data = TotalScores.GroupBy(x => x.Player.Id)
             .Select(cl => new PlayerTotalStanding
             {
                 Name = cl.First().Player.Name,

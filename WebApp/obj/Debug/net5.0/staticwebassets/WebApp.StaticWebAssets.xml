@@ -1,3 +1,7 @@
 ﻿<StaticWebAssets Version="1.0">
   <ContentRoot BasePath="/" Path="C:\Users\Morten\source\repos\BlazorGolf\WebApp\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="_content/Blazorise" Path="C:\Users\Morten\.nuget\packages\blazorise\0.9.3.6\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/Blazorise.Bootstrap" Path="C:\Users\Morten\.nuget\packages\blazorise.bootstrap\0.9.3.6\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/ChartJs.Blazor.Fork" Path="C:\Users\Morten\.nuget\packages\chartjs.blazor.fork\2.0.2\build\..\staticwebassets\" />
+  <ContentRoot BasePath="_content/MudBlazor" Path="C:\Users\Morten\.nuget\packages\mudblazor\5.0.8\build\..\staticwebassets\" />
 </StaticWebAssets>

@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using MudBlazor.Services;
 using WebApp.Data;
 using WebApp.Database;
 
@@ -38,6 +39,8 @@ namespace WebApp
 
             services.AddSingleton<HttpClient>();
 
+            services.AddMudServices();
+
             services.AddAutoMapper(typeof(Startup));
 
 
@@ -60,8 +63,9 @@ namespace WebApp
 
 
             var connection = Configuration.GetConnectionString("BlazorGolf");
-            services.AddDbContext<dbcontext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<dbcontext>(options => options.UseSqlServer(connection)); //SQL SERVER
 
+            //services.AddDbContext<dbcontext>(options => options.UseSqlite("Data Source=BlazorGolf")); // SQL LITE.
 
             IMapper mapper = mappingConfig.CreateMapper();
 

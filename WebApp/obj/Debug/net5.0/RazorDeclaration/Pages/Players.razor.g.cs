@@ -96,6 +96,13 @@ using WebApp.Dto;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 14 "C:\Users\Morten\source\repos\BlazorGolf\WebApp\_Imports.razor"
+using MudBlazor;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/players")]
     public partial class Players : Microsoft.AspNetCore.Components.ComponentBase
     {

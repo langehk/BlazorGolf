@@ -1,58 +1,122 @@
 ﻿@page "/scores";
 @inject ScoreService scoreService;
+@inject PlayerService playerService; 
+
 
 
 @if (ScoreData == null)
-    {
-        <div class="spinner-border"></div>
-    }
+{
+    <div class="spinner-border"></div>
+}
 
 else
-    {
-<h3>Scores 2021</h3>
+{
+    <h3>Scores 2021</h3>
 
 
-<a href="/scores/create">Opret score</a>
+    <a href="/scores/create">Opret score</a>
 
-<br />
+    <br />
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Bane</th>
-            <th>Dato</th>
-            <th>Spiller</th>
-            <th>Point</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var score in ScoreData)
-        {
-        <tr>
-            <td>@score.Course.Name</td>
-            <td>@score.Date</td>
-            <td>@score.Player.Name</td>
-            <td>@score.Point</td>
-        </tr>
-        }
-    </tbody>
-</table>
-    }
-
-
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Date</th>
+                <th>Player</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var score in ScoreData)
+            {
+                <tr>
+                    <td>@score.Course.Name</td>
+                    <td>@score.Date</td>
+                    <td>@score.Player.Name</td>
+                    <td>@score.Point</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
 
 
+    <div>
+        <MudChart ChartType="ChartType.Line" ChartSeries="@Series" XAxisLabels="@XAxisLabels" Width="100%" Height="350px"></MudChart>
+    </div>
+
+}
 
 @code {
 
+    //https://mudblazor.com/components/linechart
 
-    IEnumerable<WebApp.Data.Score> ScoreData;
+
+    public IEnumerable<WebApp.Data.Score> ScoreData;
+
+    public List<string> xAxis = new List<string>();
+    //X Aksen Chart.
+    public string[] XAxisLabels = { };
+
+    public IEnumerable<Player> Players;
+
+
 
     protected override async Task OnInitializedAsync()
     {
-        ScoreData = await Task.Run(() => scoreService.GetScoresAsync());
+        ScoreData = await Task.Run(() => scoreService.GetScoresAsync()); // Score, dato, player
+        Players = await Task.Run(() => playerService.GetPlayersAsync()); // Navn, id, HCP
+
+        loadChartData();
+
     }
 
+    public List<ChartSeries> Series = new List<ChartSeries>();
+    public ChartOptions Options = new ChartOptions();
 
+
+
+    public void loadChartData()
+    {
+
+        var new_data = new List<ChartSeries>() { };
+
+
+        List<double> listOfScores = new List<double>();
+
+
+
+        foreach (var player in Players)
+        {
+
+            var scoresUser = ScoreData.Where(x => x.Player.Id == player.Id).ToList();
+
+
+            double[] scoreData = new double[scoresUser.Count];
+
+
+            for (int i = 0; i < scoresUser.Count; i++)
+            {
+                scoreData[i] = scoresUser[i].Point;
+            }
+
+            new_data.Add(new ChartSeries() { Name = player.Name, Data = scoreData });
+        }
+
+
+        // Skal tilføje data til brugeren.
+        foreach (var score in ScoreData)
+        {
+            xAxis.Add(score.Date.ToString());
+        };
+
+
+        Series = new_data;
+        XAxisLabels = xAxis.ToArray(); // Sender vores datoer med ind her.
+
+        Options.YAxisTicks = 400;
+
+        StateHasChanged();
+    }
 }
