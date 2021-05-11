@@ -1,0 +1,79 @@
+﻿@inject ScoreService scoreService;
+@inject PlayerService playerService;
+
+
+<div>
+    <MudChart ChartType="ChartType.Line" Style="width: 100%" ChartSeries="@Series" XAxisLabels="@XAxisLabels" Width="100%" Height="350px"></MudChart>
+</div>
+
+
+@code {
+
+    public IEnumerable<WebApp.Data.Score> ScoreData;
+
+    // X aksen - visning af dato? - Skal ikke medtages?
+    public List<string> xAxis = new List<string>();
+    public string[] XAxisLabels = { };
+
+    public IEnumerable<Player> Players;
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        ScoreData = await Task.Run(() => scoreService.GetScoresAsync());
+        Players = await Task.Run(() => playerService.GetPlayersAsync());
+
+        await loadChartData();
+
+    }
+
+
+    public List<ChartSeries> Series = new List<ChartSeries>();
+    public ChartOptions Options = new ChartOptions();
+
+
+
+    public async Task loadChartData()
+    {
+
+        var new_data = new List<ChartSeries>() { };
+
+
+        List<double> listOfScores = new List<double>();
+
+
+
+        foreach (var player in Players)
+        {
+
+            var scoresUser = ScoreData.Where(x => x.Player.Id == player.Id).ToList();
+
+            double[] scoreData = new double[scoresUser.Count];
+
+            for (int i = 0; i < scoresUser.Count; i++)
+            {
+                scoreData[i] = scoresUser[i].Point;
+            }
+
+            new_data.Add(new ChartSeries() { Name = player.Name, Data = scoreData });
+        }
+
+
+        // Skal tilføje data til brugeren.
+        foreach (var score in ScoreData)
+        {
+            xAxis.Add(score.Date.ToString());
+        };
+
+
+        Series = new_data;
+        //XAxisLabels = xAxis.ToArray(); // Sender vores datoer med ind her. - Hvis vi vil have dem vist på X aksen.
+        Options.YAxisTicks = 400;
+
+        StateHasChanged();
+    }
+
+
+
+}
