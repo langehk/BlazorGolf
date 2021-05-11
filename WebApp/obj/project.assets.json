@@ -6639,11 +6639,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Morten\\source\\repos\\BlazorGolf\\WebApp\\WebApp.csproj",
+      "projectUniqueName": "C:\\Users\\Morten\\Documents\\GitHub\\BlazorGolf\\WebApp\\WebApp.csproj",
       "projectName": "WebApp",
-      "projectPath": "C:\\Users\\Morten\\source\\repos\\BlazorGolf\\WebApp\\WebApp.csproj",
+      "projectPath": "C:\\Users\\Morten\\Documents\\GitHub\\BlazorGolf\\WebApp\\WebApp.csproj",
       "packagesPath": "C:\\Users\\Morten\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Morten\\source\\repos\\BlazorGolf\\WebApp\\obj\\",
+      "outputPath": "C:\\Users\\Morten\\Documents\\GitHub\\BlazorGolf\\WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Morten\\AppData\\Roaming\\NuGet\\NuGet.Config",
