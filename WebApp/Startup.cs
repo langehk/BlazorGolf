@@ -36,6 +36,7 @@ namespace WebApp
             services.AddScoped<PlayerService>();
             services.AddScoped<ScoreService>();
             services.AddScoped<CourseService>();
+            services.AddScoped<PasswordService>();
 
             services.AddSingleton<HttpClient>();
 
