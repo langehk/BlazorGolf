@@ -1,0 +1,63 @@
+﻿@page "/dishes" 
+@inject DishService _dishService;
+
+    <h3>Dishes:</h3>
+        <br />
+
+    @*<ul>
+        @foreach (var item in Data)
+        {
+
+        <li>@item.Title</li>
+        <li>@item.Description</li>
+
+        }
+    </ul>*@
+
+
+    <MudBlazor.MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="GenerateDish">
+        Hvad skal vi have i dag ????
+    </MudBlazor.MudButton>
+
+
+    <MudBlazor.MudTextFieldString @bind-Value="randomData.Title" Style="width:200px">
+
+    </MudBlazor.MudTextFieldString>
+
+
+    <MudBlazor.MudTextFieldString @bind-Value="randomData.Description" Style="width:200px">
+
+    </MudBlazor.MudTextFieldString>
+
+
+
+@code {
+
+
+    public List<Dish> Data = new List<Dish>();
+
+    public Dish randomData = new Dish();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Data = await Task.Run(() => _dishService.GetDishesAsync());
+
+    }
+
+
+    public void GenerateDish()
+    {
+        var random = new Random();
+
+        var index = random.Next(Data.Count);
+
+        Console.WriteLine(Data[index]); // Hente random opskrift.
+
+        randomData = Data[index];
+
+    }
+
+
+
+
+}

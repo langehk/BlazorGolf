@@ -28,11 +28,16 @@ namespace WebApp.Database
 
         public virtual DbSet<Course> Courses { get; set; }
 
+        public virtual DbSet<Dish> Dishes { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Player>()
             .HasIndex(a => a.Id)
             .IsUnique();
+
+            modelBuilder.Entity<Player>()
+                .HasMany(x => x.Scores);
 
             modelBuilder.Entity<Score>()
             .HasOne(x => x.Player);
