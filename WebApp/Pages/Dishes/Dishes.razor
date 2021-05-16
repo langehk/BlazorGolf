@@ -2,18 +2,7 @@
 @inject DishService _dishService;
 
     <h3>Dishes:</h3>
-        <br />
-
-    @*<ul>
-        @foreach (var item in Data)
-        {
-
-        <li>@item.Title</li>
-        <li>@item.Description</li>
-
-        }
-    </ul>*@
-
+    <br />
 
     <MudBlazor.MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="GenerateDish">
         Hvad skal vi have i dag ????
@@ -28,6 +17,12 @@
     <MudBlazor.MudTextFieldString @bind-Value="randomData.Description" Style="width:200px">
 
     </MudBlazor.MudTextFieldString>
+
+
+
+    <a href="/dishes/create">
+        <MudBlazor.MudButton Variant="Variant.Outlined" Class="ma-2" Color="Color.Secondary" Size="Size.Small" >Opret opskrift</MudBlazor.MudButton>
+    </a>
 
 
 

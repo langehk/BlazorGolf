@@ -1,0 +1,32 @@
+﻿@page "/dishes/create"
+@inject DishService _dishService;
+
+<h3>CreateDish</h3>
+
+
+<EditForm Model="@Model" OnValidSubmit="@CreateNewDish">
+    <label>Title:</label>
+    <InputText id="title" @bind-Value="@Model.Title"></InputText>
+    <br />
+    <label>Desciption:</label>
+    <InputText id="desciption" @bind-Value="@Model.Description"></InputText>
+    <br />
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+
+
+@code {
+
+    public Dish Model = new Dish();
+
+
+    protected async Task CreateNewDish()
+    {
+        await Task.Run(() => _dishService.CreateDish(Model));
+
+        UriHelper.NavigateTo("Dishes");
+    }
+
+}
