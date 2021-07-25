@@ -1,0 +1,37 @@
+﻿body {
+    
+}
+
+h3 {
+    display: flex;
+    justify-content : center;
+}
+
+.about-me {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.about-card {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5%;
+}
+
+.about-person {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.chips {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    justify-content : center;
+    flex-direction:column;
+}
