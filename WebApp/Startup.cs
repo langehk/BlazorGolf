@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using AspNet.Security.OAuth.BattleNet;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
@@ -14,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MudBlazor.Services;
 using WebApp.Data;
+using WebApp.Data.Blizzard;
+using WebApp.Data.Blizzard.MythicPlus;
 using WebApp.Database;
 
 namespace WebApp
@@ -31,6 +34,19 @@ namespace WebApp
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
+
+            services.AddAuthentication(options => { /* Authentication options */ })
+            .AddBattleNet(options =>
+            {
+                options.ClientId = "dff7bc542eed473f8e7418f420559ae3";
+                options.ClientSecret = "rfLuxiVwCM4PxO8zSLJBBZwe1c6yNFoT";
+                options.Region = BattleNetAuthenticationRegion.Europe;
+            });
+
+
+            services.AddHttpClient();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<PlayerService>();
@@ -38,6 +54,8 @@ namespace WebApp
             services.AddScoped<CourseService>();
             services.AddScoped<PasswordService>();
             services.AddScoped<DishService>();
+            services.AddScoped<AccessTokenService>();
+            services.AddScoped<DungeonService>();
 
             services.AddSingleton<HttpClient>();
 

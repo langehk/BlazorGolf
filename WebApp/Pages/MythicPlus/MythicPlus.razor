@@ -1,0 +1,32 @@
+﻿@inject AccessTokenService service
+@inject DungeonService dungService
+@page "/mythicPlus"
+@using WebApp.Data.Blizzard
+@using WebApp.Data.Blizzard.MythicPlus
+
+
+<h3>MythicPlus</h3>
+
+@foreach( var data in DungeonData)
+{
+    <li>@data.Name</li>
+}
+
+
+
+@code {
+
+    private List<Dungeon> DungeonData { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        var token = service.GetAccessToken("dff7bc542eed473f8e7418f420559ae3", "rfLuxiVwCM4PxO8zSLJBBZwe1c6yNFoT");
+
+        var data = dungService.GetDungeons(token, "us");
+
+        DungeonData = data;
+
+    }
+
+}
