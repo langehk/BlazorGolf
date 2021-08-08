@@ -1,32 +1,128 @@
 ﻿@inject AccessTokenService service
 @inject DungeonService dungService
+@inject DungeonPlayerService dungPlayerService
 @page "/mythicPlus"
 @using WebApp.Data.Blizzard
 @using WebApp.Data.Blizzard.MythicPlus
 
 
 <h3>MythicPlus</h3>
-
+@*
 @foreach( var data in DungeonData)
 {
     <li>@data.Name</li>
-}
+}*@
 
 
+<EditForm Model="@SearchPlayerModel" OnSubmit="@SearchPlayer">
+    <label for="playerName">Character name:</label><br>
+    <InputText @bind-Value=SearchPlayerModel.Name class="form-control" id="PlayerName" />
 
-@code {
+    <label for="realm">Realm:</label><br>
+    <InputText  @bind-Value=SearchPlayerModel.Realm class="form-control" id="Realm" />
+    <br/>
+
+    <label>
+        Season 1:
+        <InputCheckbox @bind-Value="season.Season1" />
+    </label>
+
+   <label>
+        Season 2:
+        <InputCheckbox @bind-Value="season.Season2" />
+    </label>
+
+   
+
+    <br/>
+
+    <input type="submit" value="Search" />
+</EditForm>
+
+@if(shouldRender) {
+
+    <br />    
+    <table border="1">
+        <tr>
+            <td style="font-weight:bold">Dungeon</td>
+            <td style="font-weight:bold">Key</td>
+            <td style="font-weight:bold">Time</td>
+            <td style="font-weight:bold">Duration</td>
+            <td style="font-weight:bold">In Time</td>
+            <td style="font-weight:bold">Rating</td>
+        </tr>
+    @foreach (var bestDungeon in PlayerCurrentPeriodMythicPlusRuns)
+    {
+            <tr>
+                <td>@bestDungeon.Dungeon.Name</td>
+                <td>@bestDungeon.Keystone_level</td>
+                <td>@bestDungeon.Formatted_Completed_Timestamp</td>
+                <td>@bestDungeon.Formatted_Duration</td>
+                <td>@bestDungeon.Is_completed_within_time</td>
+                <td>@bestDungeon.Mythic_rating.Rating</td>
+            </tr>
+    }
+     </table>
+ }
+
+
+@code { bool season1;
+
+    bool shouldRender = false;
+
+    SearchPlayer SearchPlayerModel = new SearchPlayer();
+
+    Season season = new Season();
 
     private List<Dungeon> DungeonData { get; set; }
+
+    private List<BestRuns> PlayerCurrentPeriodMythicPlusRuns = new List<BestRuns>();
 
 
     protected override async Task OnInitializedAsync()
     {
+
         var token = service.GetAccessToken("dff7bc542eed473f8e7418f420559ae3", "rfLuxiVwCM4PxO8zSLJBBZwe1c6yNFoT");
 
         var data = dungService.GetDungeons(token, "us");
 
+
         DungeonData = data;
 
     }
+
+    public void SearchPlayer(EditContext editContext)
+    {
+
+        var token = service.GetAccessToken("dff7bc542eed473f8e7418f420559ae3", "rfLuxiVwCM4PxO8zSLJBBZwe1c6yNFoT");
+
+        if (@season.Season1 && @season.Season2)
+        {
+            throw new Exception("Only select one season");
+        }
+        if(@season.Season1 == false && @season.Season2 == false)
+        {
+            var playerSearch = dungPlayerService.GetMythicPlusStatsFromPlayer(token, "eu", SearchPlayerModel.Realm, SearchPlayerModel.Name );
+
+            PlayerCurrentPeriodMythicPlusRuns = playerSearch;
+        }
+        else if (@season.Season1)
+        {
+            var playerSearch = dungPlayerService.GetMythicPlusStatsFromPlayerBySeason(token, "eu", SearchPlayerModel.Realm, SearchPlayerModel.Name, "1");
+
+            PlayerCurrentPeriodMythicPlusRuns = playerSearch;
+        }else if(@season.Season2)
+        {
+            var playerSearch = dungPlayerService.GetMythicPlusStatsFromPlayerBySeason(token, "eu", SearchPlayerModel.Realm, SearchPlayerModel.Name, "2");
+
+            PlayerCurrentPeriodMythicPlusRuns = playerSearch;
+        }
+
+        shouldRender = true;
+
+    }
+
+
+    
 
 }

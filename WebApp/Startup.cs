@@ -56,6 +56,7 @@ namespace WebApp
             services.AddScoped<DishService>();
             services.AddScoped<AccessTokenService>();
             services.AddScoped<DungeonService>();
+            services.AddScoped<DungeonPlayerService>();
 
             services.AddSingleton<HttpClient>();
 
