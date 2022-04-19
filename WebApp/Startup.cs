@@ -17,6 +17,7 @@ using MudBlazor.Services;
 using WebApp.Data;
 using WebApp.Data.Blizzard;
 using WebApp.Data.Blizzard.MythicPlus;
+using WebApp.Data.Faceit;
 using WebApp.Database;
 
 namespace WebApp
@@ -57,6 +58,7 @@ namespace WebApp
             services.AddScoped<AccessTokenService>();
             services.AddScoped<DungeonService>();
             services.AddScoped<DungeonPlayerService>();
+            services.AddTransient<IFaceitService, FaceitService>();
 
             services.AddSingleton<HttpClient>();
 

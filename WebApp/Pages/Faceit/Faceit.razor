@@ -1,0 +1,46 @@
+﻿@page "/faceit"
+@using WebApp.Data.Faceit
+@inject IFaceitService faceitService
+
+<h3>Faceit</h3>
+
+<div style="display: flex; width:400px; margin-bottom: 40px;">
+    <MudTextField @bind-Value="SearchValue" Label="Standard" Variant="Variant.Text"></MudTextField>
+    <MudButton Size="Size.Small" Variant="Variant.Filled" OnClick="@SearchPlayer">Search</MudButton>
+</div>
+
+
+    <div class="display-player-data">
+        <p>Nickname: @playerData.Nickname</p>
+        <p>Country: @playerData.Country</p>
+    </div>
+    <div class="display-player-csgo-data">
+        <p>Region: @csgoData.Region </p>
+        <p>Faceit lvl: @csgoData.Skill_level </p>
+        <p>Elo: @csgoData.Faceit_elo </p>
+    </div>
+
+
+@code {
+
+    private FaceitData playerData = new FaceitData();
+
+    private GameData csgoData = new GameData();
+
+    public string SearchValue { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+    }
+
+    private async Task<FaceitData> SearchPlayer()
+    {
+        playerData = await faceitService.GetPlayerDetailsByName(SearchValue);
+
+        csgoData = playerData.Games.Where(x => x.Key.Contains("csgo")).FirstOrDefault().Value;
+
+        return playerData;
+    }
+
+}
