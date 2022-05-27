@@ -8,5 +8,7 @@ namespace WebApp.Data.Faceit
     public interface IFaceitService
     {
         Task<FaceitData> GetPlayerDetailsByName(string playerName);
+        Task<MatchHistory> GetMatchHistoryAsync(string playerID, int numberOfMatches);
+        Task<MatchStats> GetMatchStatsAsync(string matchID);
     }
 }
